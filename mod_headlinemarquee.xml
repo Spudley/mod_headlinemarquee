@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.6" client="site" method="upgrade">
+	<name>MOD_HEADLINEMARQUEE_NAME</name>
+	<author>Simon Champion</author>
+	<creationDate>November 2016</creationDate>
+    <copyright>Copyright (C) 2016 Simon Champion.</copyright>
+    <license>GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html</license>
+    <authorEmail>simon@simonchampion.net</authorEmail>
+	<version>1.0.0</version>
+	<description>MOD_HEADLINEMARQUEE_DESCRIPTION</description>
+	<files>
+		<filename module="mod_headlinemarquee">mod_headlinemarquee.php</filename>
+		<folder>headlineGenerators</folder>
+		<folder>tmpl</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_headlinemarquee.sys.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_headlinemarquee.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+                <field name="scrollDirection" type="list" description="MOD_HEADLINEMARQUEE_SCROLLDIR_DESC" label="MOD_HEADLINEMARQUEE_SCROLLDIR_LABEL" default="left">
+                    <option value="left">MOD_HEADLINEMARQUEE_SCROLLDIR_RTL</option>
+                    <option value="right">MOD_HEADLINEMARQUEE_SCROLLDIR_LTR</option>
+                    <option value="up">MOD_HEADLINEMARQUEE_SCROLLDIR_UP</option>
+                    <option value="down">MOD_HEADLINEMARQUEE_SCROLLDIR_DOWN</option>
+                </field>
+                <field
+                    name="duration"
+                    type="text"
+                    label="MOD_HEADLINEMARQUEE_DURATION_LABEL"
+                    description="MOD_HEADLINEMARQUEE_DURATION_DESC"
+                    default="5000" />
+                <field name="pauseOnHover" type="radio" description="MOD_HEADLINEMARQUEE_PAUSE_DESC" label="MOD_HEADLINEMARQUEE_PAUSE_LABEL" class="btn-group btn-group-yesno" default="1">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="source" type="list" description="MOD_HEADLINEMARQUEE_SOURCE_DESC" label="MOD_HEADLINEMARQUEE_SOURCE_LABEL" default="">
+                    <option value="None">MOD_HEADLINEMARQUEE_SOURCE_NONE</option>
+                    <option value="JoomCat">MOD_HEADLINEMARQUEE_SOURCE_JOOMLA</option>
+                    <option value="K2Cat">MOD_HEADLINEMARQUEE_SOURCE_K2</option>
+                    <option value="RSS">MOD_HEADLINEMARQUEE_SOURCE_RSS</option>
+                </field>
+                <field
+                    name="rssFeed"
+                    type="URL"
+                    showon="source:RSS"
+                    label="MOD_HEADLINEMARQUEE_RSSFEED_LABEL"
+                    description="MOD_HEADLINEMARQUEE_RSSFEED_DESC"
+                    default="" />
+                <field
+                    name="joomCat"
+                    type="category"
+                    extension="com_content"
+                    showon="source:JoomCat"
+                    label="MOD_HEADLINEMARQUEE_JOOMCAT_LABEL"
+                    description="MOD_HEADLINEMARQUEE_JOOMCAT_DESC"
+                    default="" />
+                <field
+                    name="k2Cat"
+                    type="text"
+                    extension="com_k2"
+                    showon="source:K2Cat"
+                    label="MOD_HEADLINEMARQUEE_K2CAT_LABEL"
+                    description="MOD_HEADLINEMARQUEE_K2CAT_DESC"
+                    default="" />
+                <field
+                    name="numberOfHeadlines"
+                    type="text"
+                    description="MOD_HEADLINEMARQUEE_QUANTITY_DESC"
+                    label="MOD_HEADLINEMARQUEE_QUANTITY_LABEL"
+                    default="5" />
+                <field
+                    name="separation"
+                    type="text"
+                    description="MOD_HEADLINEMARQUEE_SEPARATION_DESC"
+                    label="MOD_HEADLINEMARQUEE_SEPARATION_LABEL"
+                    default="10" />
+                <field name="separatorBullet" type="radio" description="MOD_HEADLINEMARQUEE_SEPARATOR_DESC" label="MOD_HEADLINEMARQUEE_SEPARATOR_LABEL" class="btn-group btn-group-yesno" default="1">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                    name="textBeforeSource"
+                    type="textarea"
+                    label="MOD_HEADLINEMARQUEE_TEXTBEFORE_LABEL"
+                    description="MOD_HEADLINEMARQUEE_TEXTBEFORE_DESC"
+                    default="" />
+                <field
+                    name="textAfterSource"
+                    type="textarea"
+                    label="MOD_HEADLINEMARQUEE_TEXTAFTER_LABEL"
+                    description="MOD_HEADLINEMARQUEE_TEXTAFTER_DESC"
+                    default="" />
+            </fieldset>
+		</fields>
+	</config>
+</extension>
