@@ -34,7 +34,7 @@ class generateFromK2Cat extends generateFromNone
     {
         return new Joomla\Registry\Registry([
             'itemCount' => $this->params->get('numberOfHeadlines', 5),
-            'category_id' => $this->params->get('k2Cat'),
+            'category_id' => $this->params['headlines']->k2Cat,
             'catfilter' => true,
         ]);
 

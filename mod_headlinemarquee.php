@@ -59,12 +59,17 @@ class headlineMarqueeProcessor
     private function getHeadlines()
     {
         $headlines = [];
-        $headlineClass = "generateFrom{$this->params['source']}";
+        $pluginPath = JPATH_ROOT."/plugins/headline/".strtolower($this->params['headlines']->source)."/";
+        $headlineClass = "generateFrom{$this->params['headlines']->source}";
 
         if (file_exists($this->generatorPath . $headlineClass . ".php")) {
             require_once($this->generatorPath . $headlineClass . ".php");
             $headlines = (new $headlineClass($this->params, $this->module))->getHeadlines();
+        } elseif (file_exists($pluginPath . strtolower($headlineClass) . ".php")) {
+            require_once($pluginPath . strtolower($headlineClass) . ".php");
+            $headlines = (new $headlineClass($this->params, $this->module))->getHeadlines();
         }
+
         if ($this->params['textBeforeSource']) {
             array_unshift($headlines, [$this->params['textBeforeSource'], '']);
         }

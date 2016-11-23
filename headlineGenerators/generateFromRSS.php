@@ -19,7 +19,7 @@ class generateFromRSS extends generateFromNone
     public function getHeadlines()
     {
         try {
-            $url = $this->params['rssFeed'];
+            $url = $this->params['headlines']->rssFeed;
             if (!$url) {
                 throw new HeadlineMarqueeRSSException("RSS feed URL not defined");
             }

@@ -12,21 +12,25 @@ require_once(JPATH_SITE."/components/com_content/models/category.php");
 
 class generateFromJoomCat extends generateFromNone
 {
+    /**
+     * @todo: Doesn't take permissions, etc into account; just lists all articles straight from the DB.
+     */
     public function getHeadlines()
     {
-        $cat = $this->params['joomCat'];
- 
-        $category = new ContentModelCategory();
-        $category->hit($categoryId);
-        $items = $category->getItems();
+        $cat = (int)$this->params['headlines']->joomCat;
 
-        $limit = $this->params['numberOfHeadlines'];
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('*');
+        $query->from('#__content');
+        $query->where('catid="'.$cat.'"');
+
+        $db->setQuery((string)$query);
+        $items = $db->loadObjectList();
+ 
         $output = [];
         foreach ($items as $item) {
-            $output[] = [$item->title, JRoute::_('index.php?option=com_content&view=article&id='.$item->id)];
-            if ($limit > 0 && count($output) >= $limit) {
-                break;
-            }
+            $output[] = [$item->title, JRoute::_(ContentHelperRoute::getArticleRoute($item->id, $cat))];
         }
         return $output;
     }

@@ -11,7 +11,20 @@ Introduction
 
 Headline Marquee is a Joomla! module that allows you to add a scrolling news-feed to your site. This news feed can be populated with headlines take from your Joomla site via a Joomla or K2 category, or from a external RSS feed. You can also add an additional message to the marquee text directly from within the module.
 
-This module uses the jQuery-Marquee plugin. You can read about this plugin on its page at Github, here: https://github.com/aamirafridi/jQuery.Marquee.
+This module uses the jQuery-Marquee plugin. You can read about this plugin on its page at Github, here: https://github.com/aamirafridi/jQuery.Marquee
+
+
+Version History
+---------------
+
+v2.0
+* Made it modular. It is now possible to write additional headline classes for it as separate Joomla plugins.
+* Rewrote the built-in class for Joomla categories, as it wasn't working properly (could still use some further attention though)
+
+v1.0
+* Initial release
+* Headline Marquee module.
+* Including built-in classes for Joomla Categories, K2 Categories and RSS feeds.
 
 
 Dependencies
@@ -72,6 +85,14 @@ As with all Joomla! modules, you can create duplicates of the module with differ
 Use the "Duplicate" button on the list of modules to achieve this. This is standard Joomla! functionality, so please see the Joomla! documentation for more details.
 
 
+Plugins
+-------
+
+As of v2.0, This module can make use plugins for its news feeds. This means that additional news sources can be written without having to modify the core code for the module.
+
+Please see the separate [plugins.md](plugins.md) documentation file for details of how to write a plugin.
+
+
 Who wrote this?
 ---------------
 
@@ -100,11 +121,10 @@ Todo
 ----
 
 * Make the K2 category selection a drop-down list rather than a text field.
-* Add more source types.
+* Add more source types (as separate plugins)
   - Atom feeds
   - JEvents
   - ...other Joomla extensions?
-* Make it more modular so I can add source types as separate plugins.
 * Add more options, including some from jQuery Marquee.
 
 
@@ -113,5 +133,5 @@ Trademarks and Licenses
 
 * Joomla!® is a registered trademark of Open Source Matters, Inc.
 * Joomla! is distributed under the GPLv2 licence.
-* jQuery-Marquee is distributed under the ISC license. Licence document can be obtained from the author.
+* jQuery-Marquee is distributed under the ISC license. Licence document can be obtained from the author. Please see https://github.com/aamirafridi/jQuery.Marquee
 * This package is distributed under the GPLv2 licence. The GPLv2 licence document should be included with the code.
