@@ -38,7 +38,8 @@ class headlineMarqueeProcessor
 
     public function getMarqueeText()
     {
-        $headlines = $this->getHeadlines();
+        $headlineObj = $this->getHeadlineObject();
+        $headlines = $this->getHeadlines($headlineObj);
         $output = [];
         foreach ($headlines as $headline) {
             list($text, $url) = $headline;
@@ -55,26 +56,50 @@ class headlineMarqueeProcessor
 
         return implode("<span class='marqueeSeparator' {$sepStyle}>{$bullet}</span>",$output);
     }
-    
-    private function getHeadlines()
+
+    private function getHeadlineObject()
     {
-        $headlines = [];
         $pluginPath = JPATH_ROOT."/plugins/headline/".strtolower($this->params['headlines']->source)."/";
         $headlineClass = "generateFrom{$this->params['headlines']->source}";
 
-        if (file_exists($this->generatorPath . $headlineClass . ".php")) {
-            require_once($this->generatorPath . $headlineClass . ".php");
-            $headlines = (new $headlineClass($this->params, $this->module))->getHeadlines();
-        } elseif (file_exists($pluginPath . strtolower($headlineClass) . ".php")) {
-            require_once($pluginPath . strtolower($headlineClass) . ".php");
-            $headlines = (new $headlineClass($this->params, $this->module))->getHeadlines();
+        $fullPaths = [
+            $this->generatorPath . $headlineClass . ".php",
+            $pluginPath . strtolower($headlineClass) . ".php",
+        ];
+        foreach ($fullPaths as $filepath) {
+            $headlineObj = $this->loadObject($filepath, $headlineClass);
+            if ($headlineObj) {
+                return $headlineObj;
+            }
+        }
+        return $this->loadObject($this->generatorPath . "generateFromNone.php", "generateFromNone");
+    }
+
+    private function loadObject($filepath, $headlineClass)
+    {
+        if (file_exists($filepath)) {
+            require_once($filepath);
+            return new $headlineClass($this->params, $this->module);
+        }
+    }
+
+    private function getHeadlines($headlineObj)
+    {
+        $headlines = $headlineObj->getHeadlines();
+        foreach(array_keys($headlines) as $id) {
+            if ($headlineObj->getNeedsEscaping()) {
+                $headlines[$id][0] = htmlentities($headlines[$id][0]);
+            }
+            if (isset($headlines[$id][1])) {
+                $headlines[$id][1] = htmlentities($headlines[$id][1]);
+            }
         }
 
         if ($this->params['textBeforeSource']) {
-            array_unshift($headlines, [$this->params['textBeforeSource'], '']);
+            array_unshift($headlines, [htmlentities($this->params['textBeforeSource']), '']);
         }
         if ($this->params['textAfterSource']) {
-            $headlines[] = [$this->params['textAfterSource'], ''];
+            $headlines[] = [htmlentities($this->params['textAfterSource']), ''];
         }
         return $headlines;
     }
