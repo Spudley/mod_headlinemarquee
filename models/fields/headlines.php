@@ -1,5 +1,12 @@
 <?php
-defined('_JEXEC') or die('Restricted access');
+/**
+ * @package  mod_headlinemarquee
+ *
+ * @copyright   Copyright (C) 2016 Simon Champion.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('_JEXEC') or die;
 
 jimport('joomla.form.form');
 jimport('joomla.form.formfield');
