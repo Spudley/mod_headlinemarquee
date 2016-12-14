@@ -9,6 +9,7 @@ defined('_JEXEC') or die;
 
 require_once('generateFromNone.php');
 require_once(JPATH_SITE."/components/com_content/models/category.php");
+require_once(JPATH_SITE."/components/com_content/helpers/route.php");
 
 class generateFromJoomCat extends generateFromNone
 {
