@@ -17,6 +17,9 @@ This module uses the jQuery-Marquee plugin. You can read about this plugin on it
 Version History
 ---------------
 
+v2.0.1
+* Fixed bug in JoomCat generator when loaded on a page without anything else from com_content.
+
 v2.0
 * Made it modular. It is now possible to write additional headline classes for it as separate Joomla plugins.
 * Rewrote the built-in class for Joomla categories, as it wasn't working properly (could still use some further attention though)
