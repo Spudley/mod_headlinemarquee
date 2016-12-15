@@ -5,6 +5,7 @@ A Joomla! module to display a scrolling news feed on your site.
 
 Written by Simon Champion, November 2016.
 
+If you like this extension, please review it at the Joomla Extensions Directory: https://extensions.joomla.org/extensions/extension/news-display/headline-marquee
 
 Introduction
 ------------
