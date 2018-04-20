@@ -18,7 +18,7 @@ This module uses the jQuery-Marquee plugin. You can read about this plugin on it
 Version History
 ---------------
 
-v2.1.0
+v2.2.0
 * Rewrote the JoomCat generator to use Joomla's category model rather than its own DB query. This makes it a lot easier to filter the articles properly, eg only showing published articles.
 
 v2.0.1
