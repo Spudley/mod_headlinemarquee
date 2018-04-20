@@ -6,7 +6,7 @@
     <copyright>Copyright (C) 2016 Simon Champion.</copyright>
     <license>GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html</license>
     <authorEmail>simon@simonchampion.net</authorEmail>
-	<version>2.0.1</version>
+	<version>2.1.0</version>
 	<description>MOD_HEADLINEMARQUEE_DESCRIPTION</description>
 	<files>
 		<filename module="mod_headlinemarquee">mod_headlinemarquee.php</filename>
@@ -75,4 +75,7 @@
             </fieldset>
 		</fields>
 	</config>
+	<updateservers>
+		<server type="extension" name="HIBP Update site">https://github.com/Spudley/mod_headlinemarquee/blob/master/update.xml</server>
+	</updateservers>
 </extension>
