@@ -40,11 +40,12 @@ class headlineMarqueeProcessor
     {
         $headlineObj = $this->getHeadlineObject();
         $headlines = $this->getHeadlines($headlineObj);
+        $target = $this->getLinkTarget();
         $output = [];
         foreach ($headlines as $headline) {
             list($text, $url) = $headline;
             if($url) {
-                $text = "<a href='{$url}'>{$text}</a>";
+                $text = "<a href='{$url}' {$target}>{$text}</a>";
             }
             $output[] = "<span class='marqueeItem'>{$text}</span>";
         }
@@ -55,6 +56,12 @@ class headlineMarqueeProcessor
         $bullet = $this->params->get('separatorBullet', 1) ? '&bull;' : '';
 
         return implode("<span class='marqueeSeparator' {$sepStyle}>{$bullet}</span>",$output);
+    }
+
+    private function getLinkTarget()
+    {
+        $newTab = ($this->params->params->get('linksOpenInNewTab')==1);
+        return $newTab ? "target='_blank'" : '';
     }
 
     private function getHeadlineObject()

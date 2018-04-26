@@ -38,6 +38,10 @@
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
+                <field name="linksOpenInNewTab" type="radio" description="MOD_HEADLINEMARQUEE_NEWTAB_DESC" label="MOD_HEADLINEMARQUEE_NEWTAB_LABEL" class="btn-group btn-group-yesno" default="0">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
                 <field
                     name="headlines"
                     type="Headlines"
