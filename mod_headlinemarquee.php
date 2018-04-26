@@ -31,6 +31,11 @@ class headlineMarqueeProcessor
         $this->generatorPath =  __DIR__."/headlineGenerators/";
     }
 
+    public function getClassName()
+    {
+        return $this->params->get('cssClass');
+    }
+    
     public function getDivID()
     {
         return "headlineMarquee_".$this->module->id;
@@ -60,7 +65,7 @@ class headlineMarqueeProcessor
 
     private function getLinkTarget()
     {
-        $newTab = ($this->params->params->get('linksOpenInNewTab')==1);
+        $newTab = ($this->params->get('linksOpenInNewTab')==1);
         return $newTab ? "target='_blank'" : '';
     }
 

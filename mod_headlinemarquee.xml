@@ -76,6 +76,12 @@
                     label="MOD_HEADLINEMARQUEE_TEXTAFTER_LABEL"
                     description="MOD_HEADLINEMARQUEE_TEXTAFTER_DESC"
                     default="" />
+                <field
+                    name="cssClass"
+                    type="text"
+                    label="MOD_HEADLINEMARQUEE_CSSCLASS_LABEL"
+                    description="MOD_HEADLINEMARQUEE_CSSCLASS_DESC"
+                    default="headlineMarquee" />
             </fieldset>
 		</fields>
 	</config>

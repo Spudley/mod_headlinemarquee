@@ -9,7 +9,7 @@
 defined('_JEXEC') or die;
 
 ?>
-<div class="headlineMarquee" id="<?php echo $marquee->getDivID();?>" style="overflow:hidden;">
+<div class="<?php echo $marquee->getClassName();?>" id="<?php echo $marquee->getDivID();?>" style="overflow:hidden;">
     <?php echo $marquee->getMarqueeText();?>
 </div>
 <script>
