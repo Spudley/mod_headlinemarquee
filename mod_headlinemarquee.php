@@ -108,12 +108,17 @@ class headlineMarqueeProcessor
         }
 
         if ($this->params['textBeforeSource']) {
-            array_unshift($headlines, [htmlentities($this->params['textBeforeSource']), '']);
+            array_unshift($headlines, [$this->escapeBeforeAfter($this->params['textBeforeSource']), '']);
         }
         if ($this->params['textAfterSource']) {
-            $headlines[] = [htmlentities($this->params['textAfterSource']), ''];
+            $headlines[] = [$this->escapeBeforeAfter($this->params['textAfterSource']), ''];
         }
         return $headlines;
+    }
+
+    private function escapeBeforeAfter($value)
+    {
+        return $this->params['beforeAndAfterHTML'] ? $value : htmlentities($value);
     }
 
     public function getScriptJSON()

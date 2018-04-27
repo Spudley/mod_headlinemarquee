@@ -69,13 +69,19 @@
                     type="textarea"
                     label="MOD_HEADLINEMARQUEE_TEXTBEFORE_LABEL"
                     description="MOD_HEADLINEMARQUEE_TEXTBEFORE_DESC"
+                    filter="safehtml"
                     default="" />
                 <field
                     name="textAfterSource"
                     type="textarea"
                     label="MOD_HEADLINEMARQUEE_TEXTAFTER_LABEL"
                     description="MOD_HEADLINEMARQUEE_TEXTAFTER_DESC"
+                    filter="safehtml"
                     default="" />
+                <field name="beforeAndAfterHTML" type="radio" description="MOD_HEADLINEMARQUEE_ALLOWHTML_DESC" label="MOD_HEADLINEMARQUEE_ALLOWHTML_LABEL" class="btn-group btn-group-yesno" default="0">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
                 <field
                     name="cssClass"
                     type="text"
