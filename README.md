@@ -18,6 +18,12 @@ This module uses the jQuery-Marquee plugin. You can read about this plugin on it
 Version History
 ---------------
 
+v2.3.0
+* Added new options:
+  - Open links in new tab: If set, then links in the marquee will open in new a new tab.
+  - Allow HTML in Before/After text: If set, then you will be able to use HTML code in the Text Before and Text After fields.
+  - Custom CSS class: Allows you to override the default class name for the container element for the marquee.
+
 v2.2.0
 * Rewrote the JoomCat generator to use Joomla's category model rather than its own DB query. This makes it a lot easier to filter the articles properly, eg only showing published articles.
 
@@ -59,13 +65,18 @@ You will now get the config screen for the module, which contains the following 
 * Scroll Direction
 * Duration
 * Pause on hover
-* Source
-* RSS Feed URL
-* Joomla Category
-* K2 Category
+* Open links in new tab
+* Source -- followed by one of the following, depending on the selected value:
+  - Joomla Category
+  - K2 Category
+  - RSS Feed URL
 * Number of Headlines
+* Separation between items
+* Separator bullet
 * Text Before
 * Text After
+* Allow HTML in Before/After text
+* CSS Class
 
 Help text is also available if you hover over the field captions.
 
@@ -77,7 +88,9 @@ If you pick Joomla Category, K2 Category or RSS Feed, then the appropriate field
 
 The RSS feed will be cached, so your users should not generally notice a performance hit from it.
 
-The final fields here are 'Text Before' and 'Text After'. These fields allow you to specify some text to be shown in the scolling marquee that is entered directly here in the module config rather than coming from your article headlines. This may be useful if you want to use the marquee to display a fixed system message rather than any headlines, or if you want to add some explanatory text, etc.
+The 'Text Before' and 'Text After' fields allow you to specify some text to be shown in the scolling marquee that is entered directly here in the module config rather than coming from your article headlines. This may be useful if you want to use the marquee to display a fixed system message rather than any headlines, or if you want to add some explanatory text, etc. You have the option to allow HTML to be included in these fields or not. If you set this option to 'Yes', then you will need to ensure that the values in the two fields contain valid HTML. Note that even with the option set to 'Yes', only "safe" HTML is allowed; this is intended to allow simple markup for styling purposes, not for complex scripting, etc.
+
+The final option is 'CSS Class'. This defaults to "headlineMarquee", which allows you to use CSS to style the marquee as you like. However you can override this class if you wish.
 
 Once you've selected your options, set the status to 'Published', set the position and other config parameters as required to place the module where you want it in the site, as per the normal Joomla! process, and hit 'Save'.
 
@@ -99,6 +112,8 @@ As of v2.0, This module can make use plugins for its news feeds. This means that
 
 Please see the separate [plugins.md](plugins.md) documentation file for details of how to write a plugin.
 
+If you write a plugin for this module please let me know, as I will be able to reference it and give you credit in this documentation. (Even if you don't plan to release it, it would be good to know how the module is being used)
+
 
 Who wrote this?
 ---------------
@@ -106,6 +121,10 @@ Who wrote this?
 This code was written by Simon Champion.
 
 All code in this repository is released under the GPLv2 licence. The GPLv2 licence document should be included with the code.
+
+Thanks go to those who have submitted bug reports and feature suggestions.
+
+If you use this module and like it, please consider [writing a review of it in the JED](https://extensions.joomla.org/extensions/extension/news-display/headline-marquee/).
 
 
 Support
@@ -119,8 +138,8 @@ If the issue is with the jQuery-Marquee  itself, please report it directly to th
 Caveats and known issues
 ------------------------
 
-* The author of this module is not connected with the developers of the jQuery-Marquee plugin. If you wish to report a bug or make a feature request regarding this plugin, please contact the author directly.
-* When using the RSS feed option, this module is obviously dependant on the selected feed remaining online.
+* The author of this module is not connected with the developers of the jQuery-Marquee plugin. If you wish to report a bug or make a feature request regarding this library, please contact the author directly.
+* When using the RSS feed option, this module is obviously dependent on the selected feed remaining online.
 * The jQuery-Marquee script is loaded from a third-party CDN (content delivery network). The module therefore relies on the CDN remaining online.
 
 
